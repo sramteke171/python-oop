@@ -192,12 +192,13 @@ allows the parent class to execute that default behavior.
   
 ```python
 class Parent:
-  def __init__(self, phone_number):
-    self.phone_number = phone_number
+    def __init__(self, phone_number):
+        self.phone_number = phone_number
+    
     
 class Android(Phone):
-  def __init__(self, phone_number):
-    super().__init__(phone_number)
+    def __init__(self, phone_number):
+        super().__init__(phone_number)
 ```
 
 ## Exercise: Write Bank Account Classes
