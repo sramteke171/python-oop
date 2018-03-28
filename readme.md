@@ -286,7 +286,3 @@ Overdraft account has $-28
 Clone down [this repo](https://git.generalassemb.ly/ga-wdi-exercises/codebar) and follow the instructions in the readme.
 
 > If you finish early, get started on the optional Shopping List exercise.
-
-## You Do: Shopping List (Optional)
-
-Clone down [this repo](https://git.generalassemb.ly/ga-wdi-exercises/shopping_list/) and follow the instructions in the readme.
