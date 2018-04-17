@@ -295,7 +295,9 @@ Clone down [this repo](https://git.generalassemb.ly/ga-wdi-exercises/codebar) an
 * Each account should start with a balance set to zero.
 * return the amount withdrawn, for convenience
 
-### What are Dunder Methods?
+### What are Dunder Methods (Magic Methods)?
+
+> Dunder is short-hand for *d*ouble *under*score.
 
 We've seen one dunder method before, `__init__`, which is called whenever you create an instance of a class. These methods are invoked by Python when you use a built-in method. For example the `__str__` dunder method is called whenever we use the `str()` function on an instance of the class. Let's see what that looks like:
 
