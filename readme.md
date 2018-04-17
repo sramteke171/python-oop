@@ -3,28 +3,34 @@
 ## Learning Objectives
 
 - Review the principles of Object Oriented Programming
-- Describe the relationship between a class and an instance
-- Define a Python Class and instantiate it
-- Distinguish local, instance, or class variables
-- Examine interaction with objects through methods
+- Describe the relationship between a **class** and an **instance**
+- Define a Python Class and **instantiate** it
+- Distinguish between **local**, **instance**, and **class** variables
+- Interact with objects through methods
 - Explain inheritance in Python
-- Look at Python's "magic methods"
+- Look at Python's **"magic methods"** or **dunder methods**
 
 ## Framing: Review, why OOP?
 
-#### Easy to Understand
+### Objects are Intuitive!
 
 Objects help us build programs that model how we tend to think about the world.
+Human minds tend to break down the world into objects: trees, leaves, roads,
+desks, cars, tacos, Britney Spears songs, and so on (all the *things*). Since 
+it is our  natural mental tendency to understand the world in terms of objects,
+ this is very useful for *modelling* things in the real world in our programs.
+
 Instead of a bunch of variables and functions (procedural style), we can group
-relevant data and functions into objects, and think about them as individual,
-self-contained units. This grouping of properties (data) and methods is called
-*encapsulation*.
+relevant data and functions into objects, grouping related data and behavior
+together. We think about them as individual, self-contained units. This 
+grouping of properties (data) and methods is a kind of **encapsulation**.
 
-#### Managing Complexity
+### Objects Manage Complexity
 
-This is especially important as our programs get more and more complex. We can't
-keep all the code (and what it does) in our head at once. Instead, we often want
-to think just a portion of the code.
+Encapsulation is especially important as our programs get more and more 
+complex. We can't keep all the code (and what it does) in our head at once.
+Instead, we often want to only think about a portion of the code in a given
+moment.
 
 Objects help us organize and think about our programs. If I'm looking at code
 for a Squad object, and I see it has associated *people*, and those people can
@@ -33,43 +39,28 @@ related to a person dancing. I can just think at a high level "ok, when a squad
 dances, all it's associated people dance". This is a form of *abstraction*... I
 don't need to think about the details, just what's happening at a high-level.
 
-#### Ensuring Consistency
+### Ensuring Consistency
 
-One side effect of *encapsulation* (grouping data and methods into objects) is
-that these objects can be in control of their data. This usually means ensuring
-consistency of their data.
+Another advantage of *encapsulation* (grouping data and methods into objects) 
+is that these objects can be in control of their data. This usually means 
+ensuring consistency of their data.
 
 Consider the bank account example... I might define a bank account object
 such that you can't directly change it's balance. Instead, you have to use the
-`withdraw` and `deposit` methods. Those methods are the *interface* to the
+`withdraw` and `deposit` methods. Those methods are the **interface** to the
 account, and they can enforce rules for consistency, such as "balance can't be
 less than zero".
 
-#### Modularity
+### Modularity
 
-If our objects are well-designed, then they interact with each other in
-well-defined ways. This allows us to refactor (rewrite) any object, and it
-should not impact (cause bugs) in other areas of our programs.
+Objects should stand on their own and play well with others. If our objects
+are well-designed, then they interact with each other in well-defined ways.
+This allows us to refactor (rewrite) any object, and it should not impact
+(cause bugs) in other areas of our programs.
 
 ## OOP Syntax: JavaScript vs. Python
-```bash
-$ ipython
-```
 
-```py
-class User:
-    def __init__(self, name):
-        self.name = name
-    
-    def greet(self):
-        print("Hi! My name is {}".format(self.name))
-
-me = User("Ali")
-me.greet() # prints: Hi! My name is Ali!
-```
-Let's break down this syntax. On the first line, we declare and name the class -- this one is called `User`. Then, on the next line, we see a method called `__init__`. The `__init__` method is the initializer -- for the purposes of this class we will be using it like the `constructor` in JavaScript. We use it to set the initial values of our instance's attributes. The `__init__` method takes two parameters: `self` and `name`. Self, by convention, is the first parameter to each method in a Python class. It refers to the instance of the object. `name` is another attribute we will set in our `__init__` method. Finally, the greet method displays a greeting formatted with the instance's name. At the end, we instantiate a new user with `me = User("Ali")`. 
-
-In JavaScript, we could write this class:
+In JavaScript, we could write this class...
 
 ```js
 class User {
@@ -86,8 +77,46 @@ me.setNameTo('Ali')
 me.greet() // prints: Hi! My name is Ali!
 ```
 
-## Exercise: Create a `BankAccount` class.
-* Bank accounts should be created with the `kind` of account (like "savings" or "checking").
+Let's have a look at what this might look like in Python...
+
+```bash
+$ ipython
+```
+
+> You may have to run `pip install ipython` if you see error messages about it not being installed.
+
+```py
+class User:
+    def __init__(self, name):
+        self.name = name
+    
+    def greet(self):
+        print("Hi! My name is {}".format(self.name))
+
+me = User("Ali")
+me.greet() # prints: Hi! My name is Ali!
+```
+
+Let's break down this syntax. On the first line, we declare and name the class
+-- this one is called `User`. A class declaration is always followed by a `:`.
+
+Then, on the next line, we see a method called
+`__init__`. The `__init__` method is the initializer -- for the purposes of this
+class we will be using it like the `constructor` in JavaScript. We use it to set
+the initial values of our instance's attributes. The `__init__` method takes two
+parameters: `self` and `name`. By convention `self` is the first parameter to
+each method in a Python class--`self` refers to the instance of the class, for
+ example, a `User` object.
+
+A particular `User` or instance of the `User` class will have a `name`
+attribute that we will set in our `__init__` method. Finally, the `greet`
+method displays a greeting formatted with the `User` instance's name. At the
+end, we **instantiate** a new user with `me = User("Ali")`. 
+
+### Exercise: Create a `BankAccount` class.
+
+
+* Bank accounts should be created with the `type` of account (like "savings" or "checking").
 * Each account should keep track of it's current `balance`.
 * Each account should have access to a `deposit` and a `withdraw` method.
 * Each account should start with a `balance` set to zero.
@@ -99,6 +128,27 @@ account and deposit that amount into the checking account.
 Bonus: start each account with an additional `overdraft_fees` property that
 starts at zero. If a call to `withdraw` ends with the `balance` below zero
 then `overdraft_fees` should be incremented by twenty.
+
+<details>
+<summary> Solution </summary>
+<!-- Add if not statement for negative balance -->
+<!-- Add overdraft_fees -->
+<code>
+class BankAccount:
+    def __init__(self, type):
+        self.type = type
+        self.balance = 0
+    
+    def withdraw(self, amount):
+        self.balance -= amount
+    
+    def deposit(self, amount):
+        self.balance += amount
+    
+    def get_balance(self):
+        return self.__balance
+</code>
+</details>
 
 ## Inheritance in Python
 Inheritance allows us to build new classes out of old classes.
@@ -305,6 +355,7 @@ We've seen one dunder method before, `__init__`, which is called whenever you cr
 class Dog:
     def __init__(self, name):
         self.name = name
+        self.good_dog = True
     
     def __str__(self):
         return self.name
@@ -314,18 +365,23 @@ maddie = Dog('Maddie')
 print(str(maddie))
 print(maddie)
 ```
-Some others include:
+
+Other useful dunder methods include...
 * `__getattr__` for when you get an attribute (i.e. `maddie.name`)
 * `__setattr__` for when you get an attribute (i.e. `maddie.name = 'Madison'`)
 * `__len__` for when you call `len` on the class
 * `__add__` for when you add instances of the class
 * `__getitem__` for using bracket notation on an instance of the class (i.e. `maddie['food']`)
 
-etc. They exist for almost every operator! [Reference on more](http://www.diveintopython3.net/special-method-names.html).
+Such dunder exist for ***almost every operator***! [Reference on more](http://www.diveintopython3.net/special-method-names.html).
 
-### Exercise: Fancy Bank Accounts
+### Exercise: Fancy Bank Accounts (feat. Magic Methods)
 
-* When you print the bank account, make it so that it prints a well formatted blurb about the kind of account and its balance. (ex. `Savings Account: $50`) 
+* When you print the bank account, make it so that it prints a well-formatted blurb about the kind of account and its balance. (ex. `Savings Account: $50`) 
+    > [Formatted Strings in Python](https://docs.python.org/3.6/library/string.html#format-string-syntax)
 * Make it so that you can add the balances of two bank accounts by adding two instances of the class.
+    > Check out addition dunder methods! See link above.
 * Make it so that you can subtract, multiply, and divide the balances of two bank accounts by performing those mathematical operations on two instances of the class.
+    > Check out other arithmetical dunder methods! See link above.
 * Make it so that you can compare the balances of two bank accounts by using the greater than, less than, and equals to operators in Python on two instances of the class.
+    > Check out comparison dunder methods! See link above.
