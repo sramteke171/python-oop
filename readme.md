@@ -289,11 +289,11 @@ Clone down [this repo](https://git.generalassemb.ly/ga-wdi-exercises/codebar) an
 
 ### Review Exercise: Create a BankAccount class.
 
-* Bank accounts should be created with the kind of account (like "savings" or "checking").
-* Each account should keep track of it's current balance.
-* Each account should have access to a deposit and a withdraw method.
+* Bank accounts should be created with a single account type, "savings" or "checking".
 * Each account should start with a balance set to zero.
-* return the amount withdrawn, for convenience
+* Each account should keep track of its current balance.
+* Each account should have access to a deposit method and a withdraw method.
+  > These methods should return the account balance after withdrawing or depositing. If the account would go negative after a withdrawing a certain amount, return 'Insufficient funds'.
 
 ### What are Dunder Methods (Magic Methods)?
 
