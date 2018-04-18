@@ -128,9 +128,9 @@ account and deposit that amount into the checking account.
 Bonuses: 
 1. Prevent withdrawing money if the balance will go negative.
 2. Start each account with an additional `overdraft_fees` property that starts
-at zero. If a call to `withdraw` ends with the `balance` below zero then 
+at `0`. If a call to `withdraw` ends with the `balance` below zero then 
 `overdraft_fees` should be incremented by 20. You should also prevent the user
-from going below a balance of -100.
+from going below a balance of -100, including the overdraft fees.
 
 <details>
 <summary> Solution </summary>
@@ -340,29 +340,29 @@ Sample Input:
 ```python
 basic_account = BankAccount()
 basic_account.deposit(600)
-print("Basic account has ${}".format(basic_account.balance))
+print(f"Basic account has ${basic_account.balance}")
 basic_account.withdraw(17)
-print("Basic account has ${}".format(basic_account.balance))
+print(f"Basic account has ${basic_account.balance}")
 basic_account.accumulate_interest()
-print("Basic account has ${}".format(basic_account.balance))
+print(f"Basic account has ${basic_account.balance}")
 print()
 
 childs_account = ChildrensAccount()
 childs_account.deposit(34)
-print("Child's account has ${}".format(childs_account.balance))
+print(f"Child's account has ${childs_account.balance}")
 childs_account.withdraw(17)
-print("Child's account has ${}".format(childs_account.balance))
+print(f"Child's account has ${childs_account.balance}")
 childs_account.accumulate_interest()
-print("Child's account has ${}".format(childs_account.balance))
+print(f"Child's account has ${childs_account.balance}")
 print()
 
 overdraft_account = OverdraftAccount()
 overdraft_account.deposit(12)
-print("Overdraft account has ${}".format(overdraft_account.balance))
+print(f"Overdraft account has ${overdraft_account.balance}")
 overdraft_account.withdraw(17)
-print("Overdraft account has ${}".format(overdraft_account.balance))
+print(f"Overdraft account has ${overdraft_account.balance}")
 overdraft_account.accumulate_interest()
-print("Overdraft account has ${}".format(overdraft_account.balance))
+print(f"Overdraft account has ${overdraft_account.balance}")
 ```
 
 Sample Output:
