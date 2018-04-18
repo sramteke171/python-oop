@@ -117,11 +117,9 @@ end, we **instantiate** a new user with `me = User("Ali")`.
 
 
 * Bank accounts should be created with the `type` of account (like "savings" or "checking").
-* Each account should keep track of it's current `balance`.
-* Each account should start with a `balance` set to zero.
+* Each account should keep track of its current `balance` which should start at `0`.
 * Each account should have access to a `deposit` and a `withdraw` method.
   * `withdraw` should return the amount withdrawn
-    
   * `deposit` should return the new account balance after depositing
 
 Create a checking account and a savings account. Withdraw money from the savings
@@ -129,26 +127,71 @@ account and deposit that amount into the checking account.
 
 Bonuses: 
 1. Prevent withdrawing money if the balance will go negative.
-2. *Be more evil.* Comment out the conditional from the 1st bonus. Start each 
-account with an additional `overdraft_fees` property that starts at zero. If a
-call to `withdraw` ends with the `balance` below zero then `overdraft_fees`
-should be incremented by ten billion.
+2. Start each account with an additional `overdraft_fees` property that starts
+at zero. If a call to `withdraw` ends with the `balance` below zero then 
+`overdraft_fees` should be incremented by 20. You should also prevent the user
+from going below a balance of -100.
 
 <details>
 <summary> Solution </summary>
-<!-- Add if not statement for negative balance -->
-<!-- Add overdraft_fees -->
+
+<h4> Non-Bonus </h4>
+
 <code>
 class BankAccount:
-    def __init__(self, type):
-        self.type = type
+    def __init__(self, account_type):
+        self.type = account_type
         self.balance = 0
-    
+
     def withdraw(self, amount):
         self.balance -= amount
-    
+        return amount
+
     def deposit(self, amount):
         self.balance += amount
+        return self.balance
+</code>
+
+<h4> Bonus I </h4>
+
+<code>
+class BankAccount:
+    def __init__(self, account_type):
+        self.type = account_type
+        self.balance = 0
+
+    def withdraw(self, amount):
+        if self.balance - amount < 0:
+            return 'Insufficient funds.'
+        self.balance -= amount
+        return amount
+
+    def deposit(self, amount):
+        self.balance += amount
+        return self.balance
+</code>
+
+<h4> Bonus II </h4>
+
+<code>
+class BankAccount:
+    def __init__(self, account_type):
+        self.type = account_type
+        self.balance = 0
+        self.overdraft_fees = 0
+
+    def withdraw(self, amount):
+        net_balance = self.balance - amount - self.overdraft_fees
+        self.balance -= amount if net_balance >= -100 else 0
+        if net_balance < -100:
+            return 'Insufficient Funds'
+        if self.balance < 0:
+            self.overdraft_fees += 20
+        return amount
+
+    def deposit(self, amount):
+        self.balance += amount
+        return self.balance
 </code>
 </details>
 
@@ -159,15 +202,15 @@ It allows us to extend functionality defined in a `parent`
 class and create `children` classes that extend and
 compartmentalize different pieces of functionality.
 
-Inheritance is a pattern thatmodels natural conceptual hierarchies that we're 
+Inheritance is a pattern that models natural conceptual hierarchies that we're
 used to thinking about in the world. A landline is a type of phone, and so is a
-smartphone. They are both in a phone category. Phones can at the very least, 
-call other phones and receive calls using phone numbers. A portable phone 
+smartphone. They are both in a phone category. Phones can at the very least,
+call other phones and receive calls using phone numbers. A portable phone
 connected to a landline has specific features, just as a smartphone does.
 They are both types of phones. Roughly, this is how inheritance works.
 
 We can define one general class to model something like an **Phone** and then
- `inherit` the methods and properties of the class to make new classes out of
+`inherit` the methods and properties of the class to make new classes out of
 the first class, like **IPhone** and **AndroidPhone**.
 
 When we say sub-classes, or child classes, `inherit` methods
@@ -200,11 +243,10 @@ class Phone:
         self.number = phone_number
     
     def call(self, other_number):
-        print("Calling {} from {}.".format(self.number, other_number))
+        print(f"Calling {self.number} from {other_number}.")
     
     def text(self, other_number, msg):
-        print("Sending text from {} to {}:".format(self.number, other_number))
-        print(msg);
+        print(f"Sending text from {self.number} to {other_number}: {msg}")
 ```
     
 ```python
@@ -236,10 +278,10 @@ class Android(Phone):
 
 There are two new pieces of syntax used in the code above.
 
-1. Class definitions can accept a parameter specifying what class they inherit
-  from.
-2. Child classes can invoke a method called `super()` to gain access to
-  methods defined in the parent class and execute them.
+   1. Class definitions can accept a parameter specifying what class they 
+     inherit from.
+   2. Child classes can invoke a method called `super()` to gain access to
+     methods defined in the parent class and execute them.
   
 Take another look at the Phone classes to see how these pieces of syntax
 are used to define how the classes define their inheritance and how the
