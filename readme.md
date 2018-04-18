@@ -118,16 +118,21 @@ end, we **instantiate** a new user with `me = User("Ali")`.
 
 * Bank accounts should be created with the `type` of account (like "savings" or "checking").
 * Each account should keep track of it's current `balance`.
-* Each account should have access to a `deposit` and a `withdraw` method.
 * Each account should start with a `balance` set to zero.
-* return the amount withdrawn, for convenience
+* Each account should have access to a `deposit` and a `withdraw` method.
+  * `withdraw` should return the amount withdrawn
+    
+  * `deposit` should return the new account balance after depositing
 
 Create a checking account and a savings account. Withdraw money from the savings
 account and deposit that amount into the checking account.
 
-Bonus: start each account with an additional `overdraft_fees` property that
-starts at zero. If a call to `withdraw` ends with the `balance` below zero
-then `overdraft_fees` should be incremented by twenty.
+Bonuses: 
+1. Prevent withdrawing money if the balance will go negative.
+2. *Be more evil.* Comment out the conditional from the 1st bonus. Start each 
+account with an additional `overdraft_fees` property that starts at zero. If a
+call to `withdraw` ends with the `balance` below zero then `overdraft_fees`
+should be incremented by ten billion.
 
 <details>
 <summary> Solution </summary>
@@ -151,15 +156,21 @@ class BankAccount:
 </details>
 
 ## Inheritance in Python
+
 Inheritance allows us to build new classes out of old classes.
 It allows us to extend functionality defined in a `parent`
 class and create `children` classes that extend and
 compartmentalize different pieces of functionality.
 
-Inheritance models natural hierarchies that we're used to
-thinking about in the world. We can define one general class
-to model something like an **Phone** and then `inherit` the
-methods and properties of the class to make new classes out of
+Inheritance is a pattern thatmodels natural conceptual hierarchies that we're 
+used to thinking about in the world. A landline is a type of phone, and so is a
+smartphone. They are both in a phone category. Phones can at the very least, 
+call other phones and receive calls using phone numbers. A portable phone 
+connected to a landline has specific features, just as a smartphone does.
+They are both types of phones. Roughly, this is how inheritance works.
+
+We can define one general class to model something like an **Phone** and then
+ `inherit` the methods and properties of the class to make new classes out of
 the first class, like **IPhone** and **AndroidPhone**.
 
 When we say sub-classes, or child classes, `inherit` methods
@@ -225,11 +236,12 @@ class Android(Phone):
 ```
 
 ## Inheritance Syntax
-There's two new pieces of syntax used in the code above.
 
-* Class definitions can accept a parameter specifying what class they inherit
+There are two new pieces of syntax used in the code above.
+
+1. Class definitions can accept a parameter specifying what class they inherit
   from.
-* Child classes can invoke a method called `super()` to gain access to
+2. Child classes can invoke a method called `super()` to gain access to
   methods defined in the parent class and execute them.
   
 Take another look at the Phone classes to see how these pieces of syntax
@@ -259,11 +271,10 @@ of Bank accounts.
 * Create a base **BankAccount** class
   * Bank accounts keep track of their current `balance`
   * Bank accounts have a `deposit` method
+     > returns the balance of the account after adding
   * Bank accounts have a `withdraw` method
-  * the `deposit` method returns the balance of the account after adding
     the deposited amount.
-  * the `withdraw` method returns the amount of money that was successfully
-    withdrawn.
+     > returns the amount of money that was successfully withdrawn.
   * Bank accounts return `False` if someone tries to deposit or withdraw
     a negative amount.
   * Bank accounts are created with a default interest rate of 2%
