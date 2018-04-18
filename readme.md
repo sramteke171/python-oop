@@ -137,7 +137,8 @@ from going below a balance of -100, including the overdraft fees.
 
 <h4> Non-Bonus </h4>
 
-<code>
+
+```python
 class BankAccount:
     def __init__(self, account_type):
         self.type = account_type
@@ -150,11 +151,11 @@ class BankAccount:
     def deposit(self, amount):
         self.balance += amount
         return self.balance
-</code>
+```
 
 <h4> Bonus I </h4>
 
-<code>
+```python
 class BankAccount:
     def __init__(self, account_type):
         self.type = account_type
@@ -169,11 +170,11 @@ class BankAccount:
     def deposit(self, amount):
         self.balance += amount
         return self.balance
-</code>
+```
 
 <h4> Bonus II </h4>
 
-<code>
+```python
 class BankAccount:
     def __init__(self, account_type):
         self.type = account_type
@@ -192,7 +193,7 @@ class BankAccount:
     def deposit(self, amount):
         self.balance += amount
         return self.balance
-</code>
+```
 </details>
 
 ## Inheritance in Python
