@@ -149,9 +149,6 @@ class BankAccount:
     
     def deposit(self, amount):
         self.balance += amount
-    
-    def get_balance(self):
-        return self.__balance
 </code>
 </details>
 
