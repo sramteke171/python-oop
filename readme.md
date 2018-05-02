@@ -253,7 +253,7 @@ class Phone:
 ```python
 class IPhone(Phone):
     def __init__(self, phone_number):
-        super().__init__(phone_number):
+        super().__init__(phone_number)
         self.fingerprint = None
     
     def set_fingerprint(self, fingerprint):
