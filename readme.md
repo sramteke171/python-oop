@@ -1,6 +1,6 @@
 # Intro to Object-Oriented Programming in Python
 
-## Learning Objectives
+## Learning Objectives - Ali
 
 - Review the principles of Object Oriented Programming
 - Describe the relationship between a **class** and an **instance**
@@ -12,7 +12,7 @@
 
 ## Framing: Review, why OOP?
 
-### Objects are Intuitive!
+### Objects are Intuitive! - James
 
 Objects help us build programs that model how we tend to think about the world.
 Human minds tend to break down the world into objects: trees, leaves, roads,
@@ -25,7 +25,7 @@ relevant data and functions into objects, grouping related data and behavior
 together. We think about them as individual, self-contained units. This 
 grouping of properties (data) and methods is a kind of **encapsulation**.
 
-### Objects Manage Complexity
+### Objects Manage Complexity - Ali
 
 Encapsulation is especially important as our programs get more and more 
 complex. We can't keep all the code (and what it does) in our head at once.
@@ -39,7 +39,7 @@ related to a person dancing. I can just think at a high level "ok, when a squad
 dances, all it's associated people dance". This is a form of *abstraction*... I
 don't need to think about the details, just what's happening at a high-level.
 
-### Ensuring Consistency
+### Ensuring Consistency - James
 
 Another advantage of *encapsulation* (grouping data and methods into objects) 
 is that these objects can be in control of their data. This usually means 
@@ -51,14 +51,14 @@ such that you can't directly change it's balance. Instead, you have to use the
 account, and they can enforce rules for consistency, such as "balance can't be
 less than zero".
 
-### Modularity
+### Modularity - James
 
 Objects should stand on their own and play well with others. If our objects
 are well-designed, then they interact with each other in well-defined ways.
 This allows us to refactor (rewrite) any object, and it should not impact
 (cause bugs) in other areas of our programs.
 
-## OOP Syntax: JavaScript vs. Python
+## OOP Syntax: JavaScript vs. Python - Ali
 
 In JavaScript, we could write this class...
 
@@ -113,7 +113,7 @@ attribute that we will set in our `__init__` method. Finally, the `greet`
 method displays a greeting formatted with the `User` instance's name. At the
 end, we **instantiate** a new user with `me = User("Ali")`. 
 
-### Exercise: Create a `BankAccount` class.
+### Exercise: Create a `BankAccount` class. - James
 
 
 * Bank accounts should be created with the `type` of account (like "savings" or "checking").
@@ -196,7 +196,7 @@ class BankAccount:
 ```
 </details>
 
-## Inheritance in Python
+## Inheritance in Python - Ali
 
 Inheritance allows us to build new classes out of old classes.
 It allows us to extend functionality defined in a `parent`
@@ -275,7 +275,7 @@ class Android(Phone):
         self.keyboard = keyboard
 ```
 
-## Inheritance Syntax
+## Inheritance Syntax - James
 
 There are two new pieces of syntax used in the code above.
 
@@ -304,7 +304,7 @@ class Android(Phone):
         super().__init__(phone_number)
 ```
 
-## Exercise: Write Bank Account Classes
+## Exercise: Write Bank Account Classes - Ali
 Let's practice writing classes and using inheritance by modelling different types
 of Bank accounts.
 
@@ -381,14 +381,14 @@ Overdraft account has $-28
 Overdraft account has $-28
 ```
 
-## You Do: Codebar (25 minutes, 11:45 - 12:10 / 4:15 - 4:40)
+## You Do: Codebar (25 minutes, 11:45 - 12:10 / 4:15 - 4:40) - James
 
 > 20 minutes exercise. 5 minutes review.
 
 Clone down [this repo](https://git.generalassemb.ly/ga-wdi-exercises/codebar) and follow the instructions in the readme.
 
 
-### Review Exercise: Create a BankAccount class.
+### Review Exercise: Create a BankAccount class. - James
 
 * Bank accounts should be created with a single account type, "savings" or "checking".
 * Each account should start with a balance set to zero.
@@ -396,7 +396,7 @@ Clone down [this repo](https://git.generalassemb.ly/ga-wdi-exercises/codebar) an
 * Each account should have access to a deposit method and a withdraw method.
   > These methods should return the account balance after withdrawing or depositing. If the account would go negative after a withdrawing a certain amount, return 'Insufficient funds'.
 
-### What are Dunder Methods (Magic Methods)?
+### What are Dunder Methods (Magic Methods)? - Ali
 
 > Dunder is short-hand for *d*ouble *under*score.
 
@@ -426,7 +426,7 @@ Other useful dunder methods include...
 
 Such dunder exist for ***almost every operator***! [Reference on more](http://www.diveintopython3.net/special-method-names.html).
 
-### Exercise: Fancy Bank Accounts (feat. Magic Methods)
+### Exercise: Fancy Bank Accounts (feat. Magic Methods) - James
 
 * When you print the bank account, make it so that it prints a well-formatted blurb about the kind of account and its balance. (ex. `Savings Account: $50`) 
     > [Formatted Strings in Python](https://docs.python.org/3.6/library/string.html#format-string-syntax)
