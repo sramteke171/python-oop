@@ -381,12 +381,6 @@ Overdraft account has $-28
 Overdraft account has $-28
 ```
 
-## You Do: Codebar (25 minutes, 11:45 - 12:10 / 4:15 - 4:40) - James
-
-> 20 minutes exercise. 5 minutes review.
-
-Clone down [this repo](https://git.generalassemb.ly/dc-wdi-python-django/codebar) and follow the instructions in the readme.
-
 ### What are Dunder Methods (Magic Methods)? - Ali
 
 > Dunder is short-hand for *d*ouble *under*score.
@@ -427,3 +421,9 @@ Such dunder exist for ***almost every operator***! [Reference on more](http://ww
     > Check out other arithmetical dunder methods! See link above.
 * Make it so that you can compare the balances of two bank accounts by using the greater than, less than, and equals to operators in Python on two instances of the class.
     > Check out comparison dunder methods! See link above.
+
+## Bonus - You Do: Codebar - James
+
+> 20 minutes exercise. 5 minutes review.
+
+Clone down [this repo](https://git.generalassemb.ly/dc-wdi-python-django/codebar) and follow the instructions in the readme.
