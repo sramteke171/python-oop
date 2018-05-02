@@ -385,16 +385,7 @@ Overdraft account has $-28
 
 > 20 minutes exercise. 5 minutes review.
 
-Clone down [this repo](https://git.generalassemb.ly/ga-wdi-exercises/codebar) and follow the instructions in the readme.
-
-
-### Review Exercise: Create a BankAccount class. - James
-
-* Bank accounts should be created with a single account type, "savings" or "checking".
-* Each account should start with a balance set to zero.
-* Each account should keep track of its current balance.
-* Each account should have access to a deposit method and a withdraw method.
-  > These methods should return the account balance after withdrawing or depositing. If the account would go negative after a withdrawing a certain amount, return 'Insufficient funds'.
+Clone down [this repo](https://git.generalassemb.ly/dc-wdi-python-django/codebar) and follow the instructions in the readme.
 
 ### What are Dunder Methods (Magic Methods)? - Ali
 
