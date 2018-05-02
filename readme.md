@@ -294,7 +294,7 @@ Android class calls the parent constructor through the super method and
 allows the parent class to execute that default behavior.
   
 ```python
-class Parent:
+class Phone:
     def __init__(self, phone_number):
         self.phone_number = phone_number
     
