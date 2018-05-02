@@ -73,7 +73,7 @@ class User {
 }
 
 const me = new User()
-me.setNameTo('Ali')
+me.name = 'Ali'
 me.greet() // prints: Hi! My name is Ali!
 ```
 
