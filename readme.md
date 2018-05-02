@@ -67,14 +67,14 @@ class User {
   constructor (name) {
     this.name = name
   }
+
   greet () {
-    console.log(`Hi! My name is ${this.name}`)
+    console.log(`Hi! My name is ${this.name}.`)
   }
 }
 
-const me = new User()
-me.name = 'Ali'
-me.greet() // prints: Hi! My name is Ali!
+const me = new User('Ali')
+me.greet()
 ```
 
 Let's have a look at what this might look like in Python...
@@ -89,12 +89,12 @@ $ ipython
 class User:
     def __init__(self, name):
         self.name = name
-    
-    def greet(self):
-        print("Hi! My name is {}".format(self.name))
 
-me = User("Ali")
-me.greet() # prints: Hi! My name is Ali!
+    def greet(self):
+        print(f'Hi! My name is {self.name}')
+
+me = User('Ali')
+me.greet()
 ```
 
 Let's break down this syntax. On the first line, we declare and name the class
