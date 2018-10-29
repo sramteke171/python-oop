@@ -10,70 +10,69 @@
 - Explain inheritance in Python
 - Look at Python's **"magic methods"** or **dunder methods**
 
-## Framing: Review, why OOP?
+## Framing: Review, why OOP? (5 min / 0:05)
 
 ### Objects are Intuitive!
 
 Objects help us build programs that model how we tend to think about the world.
 Human minds tend to break down the world into objects: trees, leaves, roads,
-desks, cars, tacos, Britney Spears songs, and so on (all the *things*). Since
-it is our  natural mental tendency to understand the world in terms of objects,
-this is very useful for *modelling* things in the real world in our programs.
+desks, cars, tacos, Britney Spears songs, and so on (all the _things_). Since it
+is our natural mental tendency to understand the world in terms of objects, this
+is very useful for _modelling_ things in the real world in our programs.
 
 Instead of a bunch of variables and functions (procedural style), we can group
 relevant data and functions into objects, grouping related data and behavior
-together. We think about them as individual, self-contained units. This
-grouping of properties (data) and methods is a kind of **encapsulation**.
+together. We think about them as individual, self-contained units. This grouping
+of properties (data) and methods is a kind of **encapsulation**.
 
 ### Objects Manage Complexity
 
-Encapsulation is especially important as our programs get more and more
-complex. We can't keep all the code (and what it does) in our head at once.
-Instead, we often want to only think about a portion of the code in a given
-moment.
+Encapsulation is especially important as our programs get more and more complex.
+We can't keep all the code (and what it does) in our head at once. Instead, we
+often want to only think about a portion of the code in a given moment.
 
 Objects help us organize and think about our programs. If I'm looking at code
-for a Squad object, and I see it has associated *people*, and those people can
+for a Squad object, and I see it has associated _people_, and those people can
 dance when the squad dances, I don't need to think about or see all the code
 related to a person dancing. I can just think at a high level "ok, when a squad
-dances, all it's associated people dance". This is a form of *abstraction*: I
+dances, all it's associated people dance". This is a form of _abstraction_: I
 don't need to think about the details, just what's happening at a high-level.
 
 ### Ensuring Consistency
 
-Another advantage of *encapsulation* (grouping data and methods into objects)
-is that these objects can be in control of their data. This usually means
-ensuring consistency of their data.
+Another advantage of _encapsulation_ (grouping data and methods into objects) is
+that these objects can be in control of their data. This usually means ensuring
+consistency of their data.
 
-Consider an example of a bank account: I might define a bank account object
-such that you can't directly change it's balance. Instead, you have to use the
+Consider an example of a bank account: I might define a bank account object such
+that you can't directly change it's balance. Instead, you have to use the
 `withdraw` and `deposit` methods. Those methods are the **interface** to the
 account, and they can enforce rules for consistency, such as "balance can't be
 less than zero".
 
 ### Modularity
 
-Objects should stand on their own and play well with others. If our objects
-are well-designed, then they interact with each other in well-defined ways.
-This allows us to refactor (rewrite) any object, and it should not impact
-(cause bugs) in other areas of our programs.
+Objects should stand on their own and play well with others. If our objects are
+well-designed, then they interact with each other in well-defined ways. This
+allows us to refactor (rewrite) any object, and it should not impact (cause
+bugs) in other areas of our programs.
 
-## OOP Syntax: JavaScript vs. Python
+## OOP Syntax: JavaScript vs. Python (5 min / 0:10)
 
 In JavaScript, we could write this class:
 
 ```js
 class User {
-  constructor (name) {
+  constructor(name) {
     this.name = name
   }
 
-  greet () {
+  greet() {
     console.log(`Hi! My name is ${this.name}.`)
   }
 }
 
-const me = new User('Ali')
+const me = new User("Ali")
 me.greet()
 ```
 
@@ -84,40 +83,39 @@ class User:
     def __init__(self, name):
         self.name = name
 
-    def __init__(self, name):
-        self.name = name
-
     def greet(self):
         print(f'Hi! My name is {self.name}')
 
-me = User('Ali')
+me = User('Jimmy')
 me.greet()
-// "Hi! My name is Ali"
+// "Hi! My name is Jimmy"
 ```
 
 Let's break down this syntax. On the first line, we declare and name the class
+
 - this one is called `User`. A class declaration is always followed by a `:`.
 
-Then, on the next line, we see a method called
-`__init__`. The `__init__` method is the initializer - for the purposes of this
-class we will be using it like the `constructor` in JavaScript. We use it to set
+Then, on the next line, we see a method called `__init__`. The `__init__` method
+is the initializer - just like a `constructor` in JavaScript. We use it to set
 the initial values of our instance's attributes. The `__init__` method takes two
 parameters: `self` and `name`. By convention `self` is the first parameter to
 each method in a Python class - it refers to the instance of the class, for
- example, a `User` object.
+example, a `User` object.
 
-A particular `User` or instance of the `User` class will have a `name`
-attribute that we will set in our `__init__` method. Finally, the `greet`
-method displays a greeting formatted with the `User` instance's name. At the
-end, we **instantiate** a new user with `me = User("Ali")`.
+A particular `User` or instance of the `User` class will have a `name` attribute
+that we will set in our `__init__` method. Finally, the `greet` method displays
+a greeting formatted with the `User` instance's name. At the end, we
+**instantiate** a new user with `me = User("Ali")`.
 
-### Exercise: Create a `BankAccount` class.
+### Exercise: Create a `BankAccount` class (20 min / 0:30).
 
-* Bank accounts should be created with the `type` of account (like "savings" or "checking").
-* Each account should keep track of its current `balance` which should start at `0`.
-* Each account should have access to a `deposit` and a `withdraw` method.
-  * `withdraw` should return the amount withdrawn
-  * `deposit` should return the new account balance after depositing
+- Bank accounts should be created with the `type` of account (like "savings" or
+  "checking").
+- Each account should keep track of its current `balance` which should start at
+  `0`.
+- Each account should have access to a `deposit` and a `withdraw` method.
+  - `withdraw` should return the amount withdrawn
+  - `deposit` should return the new account balance after depositing
 
 Create a checking account and a savings account. Withdraw money from the savings
 account and deposit that amount into the checking account.
@@ -126,15 +124,14 @@ Bonuses:
 
 1. Prevent withdrawing money if the balance will go negative.
 2. Start each account with an additional `overdraft_fees` property that starts
-at `0`. If a call to `withdraw` ends with the `balance` below zero then
-`overdraft_fees` should be incremented by 20. You should also prevent the user
-from going below a balance of -100, including the overdraft fees.
+   at `0`. If a call to `withdraw` ends with the `balance` below zero then
+   `overdraft_fees` should be incremented by 20. You should also prevent the
+   user from going below a balance of -100, including the overdraft fees.
 
 <details>
 <summary> Solution </summary>
 
 <h4> Non-Bonus </h4>
-
 
 ```python
 class BankAccount:
@@ -192,49 +189,46 @@ class BankAccount:
         self.balance += amount
         return self.balance
 ```
+
 </details>
 
 ## Inheritance in Python
 
-Inheritance allows us to build new classes out of old classes. 
-It allows us to extend functionality defined in a `parent`
-class and create `children` classes that extend and
-compartmentalize different pieces of functionality.
+Inheritance allows us to build new classes out of old classes. It allows us to
+extend functionality defined in a `parent` class and create `children` classes
+that extend and compartmentalize different pieces of functionality.
 
 Inheritance is a pattern that models natural conceptual hierarchies that we're
 used to thinking about in the world. A landline is a type of phone, and so is a
 smartphone. They are both in a phone category. Phones can at the very least,
 call other phones and receive calls using phone numbers. A portable phone
-connected to a landline has specific features, just as a smartphone does.
-They are both types of phones. Roughly, this is how inheritance works.
+connected to a landline has specific features, just as a smartphone does. They
+are both types of phones. Roughly, this is how inheritance works.
 
 We can define one general class to model something like a **Phone** and then
-`inherit` the methods and properties of the class to make new classes out of
-the first class, like **IPhone** and **AndroidPhone**.
+`inherit` the methods and properties of the class to make new classes out of the
+first class, like **IPhone** and **AndroidPhone**.
 
-When we say sub-classes, or child classes, `inherit` methods
-and properties from a parent class we mean the child class
-has access to all of the functionality of it's parent, and
-it can define it's own functionality on top of that.
+When we say sub-classes, or child classes, `inherit` methods and properties from
+a parent class we mean the child class has access to all of the functionality of
+it's parent, and it can define it's own functionality on top of that.
 
-When we define a class to represent a **Phone** we can add
-the basic properties and functionality that all phones
-have.
+When we define a class to represent a **Phone** we can add the basic properties
+and functionality that all phones have.
 
-* All phones have a phone number
-* All phones can place phone calls
-* All phones can send text messages
+- All phones have a phone number
+- All phones can place phone calls
+- All phones can send text messages
 
-After we define what a **Phone** is we can create classes
-that `inherit` from the Phone class and add their own
-properties and functionality.
+After we define what a **Phone** is we can create classes that `inherit` from
+the Phone class and add their own properties and functionality.
 
-Let's define two new classes that `inherit` from the **Phone** class.
-We'll make an **IPhone** and an **AndroidPhone**.
+Let's define two new classes that `inherit` from the **Phone** class. We'll make
+an **IPhone** and an **AndroidPhone** (class names are uppercase by convention, but not required)
 
-* iPhones have a unique `unlock` method that accepts a fingerprint
-* iPhones have a unique `set_fingerprint` method that accepts a fingerprint
-* Android phones have a unique `set_keyboard` method that accepts a keyboard
+- iPhones have a unique `unlock` method that accepts a fingerprint
+- iPhones have a unique `set_fingerprint` method that accepts a fingerprint
+- Android phones have a unique `set_keyboard` method that accepts a keyboard
 
 ```python
 class Phone:
@@ -242,7 +236,7 @@ class Phone:
         self.number = phone_number
 
     def call(self, other_number):
-        print(f"Calling {self.number} from {other_number}.")
+        print(f"Calling {other_number}.")
 
     def text(self, other_number, msg):
         print(f"Sending text from {self.number} to {other_number}: {msg}")
@@ -276,19 +270,19 @@ class Android(Phone):
 
 There are two new pieces of syntax used in the code above:
 
- 1. Class definitions can accept a parameter specifying what class they
-    inherit from.
- 2. Child classes can invoke a method called `super()` to gain access to
-    methods defined in the parent class and execute them.
+1.  Class definitions can accept a parameter specifying what class they inherit
+    from.
+2.  Child classes can invoke a method called `super()` to gain access to methods
+    defined in the parent class and execute them.
 
-Take another look at the Phone classes to see how these pieces of syntax
-are used to define how the classes define their inheritance and how the
-`super()` method is used.
+Take another look at the Phone classes to see how these pieces of syntax are
+used to define how the classes define their inheritance and how the `super()`
+method is used.
 
 Notice how the Android class doesn't repeat the code that attaches the
 phone_number passed to the `__init__` method to the `self` reference. The
-Android class calls the parent constructor through the super method and
-allows the parent class to execute that default behavior.
+Android class calls the parent constructor through the `super()` method and allows
+the parent class to execute that default behavior.
 
 ```python
 class Phone:
@@ -303,34 +297,36 @@ class Android(Phone):
 
 ## Exercise: Write Bank Account Classes
 
-Let's practice writing classes and using inheritance by modelling different types
-of Bank accounts.
+Let's practice writing classes and using inheritance by modelling different
+types of Bank accounts.
 
-* Create a base **BankAccount** class
-  * Bank accounts keep track of their current `balance`
-  * Bank accounts have a `deposit` method that returns the balance of the account after adding
-  * Bank accounts have a `withdraw` method that returns the amount of money that was successfully withdrawn.
-  * Bank accounts return `False` if someone tries to deposit or withdraw
-    a negative amount.
-  * Bank accounts are created with a default interest rate of 2%
-  * Bank accounts have a `accumulate_interest` method that sets the balance
+- Create a base **BankAccount** class
+  - Bank accounts keep track of their current `balance`
+  - Bank accounts have a `deposit` method that returns the balance of the
+    account after adding
+  - Bank accounts have a `withdraw` method that returns the amount of money that
+    was successfully withdrawn.
+  - Bank accounts return `False` if someone tries to deposit or withdraw a
+    negative amount.
+  - Bank accounts are created with a default interest rate of 2%
+  - Bank accounts have a `accumulate_interest` method that sets the balance
     equal to the balance plus the balance times the interest rate
-  * `accumulate_interest` returns the balance of the account after calculating
+  - `accumulate_interest` returns the balance of the account after calculating
     the accumulated interest
-* Create a **ChildrensAccount** class
-  * Children's bank accounts have an interest rate of Zero.
-  * Every time `accumulate_interest` is executed on a Child's account the
-    account  always gets $10 added to the balance.
-* Create an **OverdraftAccount** class
-  * An overdraft account penalizes customers for trying to draw too much
-    money out of their account.
-  * Overdraft accounts are created with an `overdraft_penalty` property
-    that defaults to $40.
-  * Customer's aren't allowed to withdraw more money than they have in their
+- Create a **ChildrensAccount** class
+  - Children's bank accounts have an interest rate of Zero.
+  - Every time `accumulate_interest` is executed on a Child's account the
+    account always gets $10 added to the balance.
+- Create an **OverdraftAccount** class
+  - An overdraft account penalizes customers for trying to draw too much money
+    out of their account.
+  - Overdraft accounts are created with an `overdraft_penalty` property that
+    defaults to $40.
+  - Customer's aren't allowed to withdraw more money than they have in their
     account. If a customer tries to withdraw more than they have then the
-    withdraw method returns `False` and their balance is deducted only by
-    the amount of the `overdraft_penalty`.
-  * Overdraft accounts don't accumulate interest if their balance is below zero.
+    withdraw method returns `False` and their balance is deducted only by the
+    amount of the `overdraft_penalty`.
+  - Overdraft accounts don't accumulate interest if their balance is below zero.
 
 Sample Input:
 
@@ -382,7 +378,11 @@ Overdraft account has $-28
 
 > Dunder is short-hand for *d*ouble *under*score.
 
-We've seen one dunder method before, `__init__`, which is called whenever you create an instance of a class. These methods are invoked by Python when you use a built-in method. For example the `__str__` dunder method is called whenever we use the `str()` function on an instance of the class. Let's see what that looks like:
+We've seen one dunder method before, `__init__`, which is called whenever you
+create an instance of a class. These methods are invoked by Python when you use
+a built-in method. For example the `__str__` dunder method is called whenever we
+use the `str()` function on an instance of the class. Let's see what that looks
+like:
 
 ```py
 class Dog:
@@ -401,27 +401,37 @@ print(maddie)
 
 Other useful dunder methods include:
 
-* `__getattr__` for when you get an attribute (i.e. `maddie.name`)
-* `__setattr__` for when you get an attribute (i.e. `maddie.name = 'Madison'`)
-* `__len__` for when you call `len` on the class
-* `__add__` for when you add instances of the class
-* `__getitem__` for using bracket notation on an instance of the class (i.e. `maddie['food']`)
+- `__getattr__` for when you get an attribute (i.e. `maddie.name`)
+- `__setattr__` for when you get an attribute (i.e. `maddie.name = 'Madison'`)
+- `__len__` for when you call `len` on the class
+- `__add__` for when you add instances of the class
+- `__getitem__` for using bracket notation on an instance of the class (i.e.
+  `maddie['food']`)
 
-Such dunder methods exist for ***almost every operator***! [Reference on more](http://www.diveintopython3.net/special-method-names.html).
+Such dunder methods exist for **_almost every operator_**!
+[Reference on more](http://www.diveintopython3.net/special-method-names.html).
 
 ### Exercise: Fancy Bank Accounts (feat. Magic Methods)
 
-* When you print the bank account, make it so that it prints a well-formatted blurb about the kind of account and its balance. (ex. `Savings Account: $50`)
-    > [Formatted Strings in Python](https://docs.python.org/3.6/library/string.html#format-string-syntax)
-* Make it so that you can add the balances of two bank accounts by adding two instances of the class.
-    > Check out addition dunder methods! See link above.
-* Make it so that you can subtract, multiply, and divide the balances of two bank accounts by performing those mathematical operations on two instances of the class.
-    > Check out other arithmetical dunder methods! See link above.
-* Make it so that you can compare the balances of two bank accounts by using the greater than, less than, and equals to operators in Python on two instances of the class.
-    > Check out comparison dunder methods! See link above.
+- When you print the bank account, make it so that it prints a well-formatted
+  blurb about the kind of account and its balance. (ex. `Savings Account: $50`)
+  > [Formatted Strings in Python](https://docs.python.org/3.6/library/string.html#format-string-syntax)
+- Make it so that you can add the balances of two bank accounts by adding two
+  instances of the class.
+  > Check out addition dunder methods! See link above.
+- Make it so that you can subtract, multiply, and divide the balances of two
+  bank accounts by performing those mathematical operations on two instances of
+  the class.
+  > Check out other arithmetical dunder methods! See link above.
+- Make it so that you can compare the balances of two bank accounts by using the
+  greater than, less than, and equals to operators in Python on two instances of
+  the class.
+  > Check out comparison dunder methods! See link above.
 
 ## Bonus - You Do: Codebar
 
 > 20 minutes exercise. 5 minutes review.
 
-Clone down [this repo](https://git.generalassemb.ly/dc-wdi-python-django/codebar) and follow the instructions in the readme.
+Clone down
+[this repo](https://git.generalassemb.ly/dc-wdi-python-django/codebar) and
+follow the instructions in the readme.
