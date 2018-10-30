@@ -63,13 +63,13 @@ In JavaScript, we could write this class:
 
 ```js
 class User {
-  constructor(name) {
-    this.name = name
-  }
+	constructor(name) {
+		this.name = name
+	}
 
-  greet() {
-    console.log(`Hi! My name is ${this.name}.`)
-  }
+	greet() {
+		console.log(`Hi! My name is ${this.name}.`)
+	}
 }
 
 const me = new User("Ali")
@@ -108,6 +108,8 @@ a greeting formatted with the `User` instance's name. At the end, we
 **instantiate** a new user with `me = User("Ali")`.
 
 ### Exercise: Create a `BankAccount` class (20 min / 0:30).
+
+> 10 min exercise, 10 min review
 
 - Bank accounts should be created with the `type` of account (like "savings" or
   "checking").
@@ -192,7 +194,7 @@ class BankAccount:
 
 </details>
 
-## Inheritance in Python
+## Inheritance in Python (30 min / 1:00)
 
 Inheritance allows us to build new classes out of old classes. It allows us to
 extend functionality defined in a `parent` class and create `children` classes
@@ -224,7 +226,8 @@ After we define what a **Phone** is we can create classes that `inherit` from
 the Phone class and add their own properties and functionality.
 
 Let's define two new classes that `inherit` from the **Phone** class. We'll make
-an **IPhone** and an **AndroidPhone** (class names are uppercase by convention, but not required)
+an **IPhone** and an **AndroidPhone** (class names are uppercase by convention,
+but not required)
 
 - iPhones have a unique `unlock` method that accepts a fingerprint
 - iPhones have a unique `set_fingerprint` method that accepts a fingerprint
@@ -281,8 +284,8 @@ method is used.
 
 Notice how the Android class doesn't repeat the code that attaches the
 phone_number passed to the `__init__` method to the `self` reference. The
-Android class calls the parent constructor through the `super()` method and allows
-the parent class to execute that default behavior.
+Android class calls the parent constructor through the `super()` method and
+allows the parent class to execute that default behavior.
 
 ```python
 class Phone:
@@ -295,15 +298,20 @@ class Android(Phone):
         super().__init__(phone_number)
 ```
 
-## Exercise: Write Bank Account Classes
+## Break (10 min / 1:10)
 
-Let's practice writing classes and using inheritance by modelling different
-types of Bank accounts.
+## Exercise: Write Bank Account Classes (40 min / 2:00)
+
+> 20 min exercise, 20 min review
+
+Let's practice writing classes and using inheritance by modeling different types
+of Bank accounts.
 
 - Create a base **BankAccount** class
   - Bank accounts keep track of their current `balance`
+  - Bank accounts have a `check_balance` method that returns the current balance
   - Bank accounts have a `deposit` method that returns the balance of the
-    account after adding
+    account after adding to it
   - Bank accounts have a `withdraw` method that returns the amount of money that
     was successfully withdrawn.
   - Bank accounts return `False` if someone tries to deposit or withdraw a
@@ -314,10 +322,12 @@ types of Bank accounts.
   - `accumulate_interest` returns the balance of the account after calculating
     the accumulated interest
 - Create a **ChildrensAccount** class
+  - Inherits from **BankAccount**
   - Children's bank accounts have an interest rate of Zero.
   - Every time `accumulate_interest` is executed on a Child's account the
     account always gets $10 added to the balance.
 - Create an **OverdraftAccount** class
+  - Inherits from **BankAccount**
   - An overdraft account penalizes customers for trying to draw too much money
     out of their account.
   - Overdraft accounts are created with an `overdraft_penalty` property that
@@ -374,6 +384,75 @@ Overdraft account has $-28
 Overdraft account has $-28
 ```
 
+<details>
+<summary>
+Solution
+</summary>
+
+```python
+class BankAccount():
+    def __init__(self):
+        self.balance = 0
+        self.interest = 1.02
+
+    def __str__(self):
+        return f"Current Balance: $ {self.balance}"
+
+    def withdraw(self, amount):
+        if amount > self.balance:
+            return False
+        elif amount <= 0:
+            return False
+        else:
+            return amount
+
+    def deposit(self, amount):
+        if amount <= 0:
+            return False
+        else:
+            self.balance += amount
+            return self.balance
+
+    def check_balance(self):
+        return self.balance
+
+    def accumulate_interest(self):
+        self.balance = self.balance * self.interest
+        return self.balance
+
+
+class ChildrensAccount(BankAccount):
+    def __init__(self):
+        super().__init__()
+        self.interest = 0
+    
+    def accumulate_interest(self):
+        self.balance += 10
+        return self.balance
+    
+
+class OverdraftAccount(BankAccount):
+    def __init__(self):
+        super().__init__()
+        self.overdraft_penalty = 40
+
+    def withdraw(self, amount):
+        if amount > self.balance:
+            self.balance -= self.overdraft_penalty
+            return False
+        else:
+            return super().withdraw(amount)
+
+    def accumulate_interest(self):
+        if self.balance <= 0:
+            return self.balance
+        else:
+            return super().accumulate_interest()
+```
+</details>
+
+## Break (10 min / 2:00)
+
 ### What are Dunder Methods (Magic Methods)?
 
 > Dunder is short-hand for *d*ouble *under*score.
@@ -395,8 +474,8 @@ class Dog:
 
 
 maddie = Dog('Maddie')
-print(str(maddie))
-print(maddie)
+print(str(maddie)) # Maddie
+print(maddie) # Maddie
 ```
 
 Other useful dunder methods include:
@@ -411,7 +490,9 @@ Other useful dunder methods include:
 Such dunder methods exist for **_almost every operator_**!
 [Reference on more](http://www.diveintopython3.net/special-method-names.html).
 
-### Exercise: Fancy Bank Accounts (feat. Magic Methods)
+### Exercise: Fancy Bank Accounts (feat. Magic Methods) (20 min / 2:20)
+
+> 15 min exercise, 5 min review
 
 - When you print the bank account, make it so that it prints a well-formatted
   blurb about the kind of account and its balance. (ex. `Savings Account: $50`)
