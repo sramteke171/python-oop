@@ -1,16 +1,29 @@
+[![General Assembly Logo](https://camo.githubusercontent.com/1a91b05b8f4d44b5bbfb83abac2b0996d8e26c92/687474703a2f2f692e696d6775722e636f6d2f6b6538555354712e706e67)](https://generalassemb.ly/education/web-development-immersive)
+
 # Intro to Object-Oriented Programming in Python
 
-## Learning Objectives
+We've covered Object-Oriented programming in JavaScript. Now we'll cover
+the same principles in Python. Be on the look out for similarities and
+differences between the two languages!
 
-- Review the principles of Object Oriented Programming
-- Describe the relationship between a **class** and an **instance**
-- Define a Python Class and **instantiate** it
-- Distinguish between **local**, **instance**, and **class** variables
-- Interact with objects through methods
-- Explain inheritance in Python
-- Look at Python's **"magic methods"** or **dunder methods**
+## Prerequisites
 
-## Framing: Review, why OOP? (5 min / 0:05)
+* Python
+* Object-Oriented Programming in another language
+
+## Objectives
+
+By the end of this, developers should be able to:
+
+* Review the principles of Object Oriented Programming
+* Describe the relationship between a class and an instance
+* Define a Python Class and instantiate it
+* Distinguish between local, instance, and class variables
+* Interact with objects through methods
+* Explain inheritance in Python
+* Look at Python's "magic methods" or dunder methods
+
+## Review: Why OOP? (5 min / 0:05)
 
 ### Objects are Intuitive!
 
@@ -63,13 +76,13 @@ In JavaScript, we could write this class:
 
 ```js
 class User {
-	constructor(name) {
-		this.name = name
-	}
+  constructor(name) {
+    this.name = name
+  }
 
-	greet() {
-		console.log(`Hi! My name is ${this.name}.`)
-	}
+  greet() {
+    console.log(`Hi! My name is ${this.name}.`)
+  }
 }
 
 const me = new User("Ali")
@@ -91,9 +104,8 @@ me.greet()
 // "Hi! My name is Jimmy"
 ```
 
-Let's break down this syntax. On the first line, we declare and name the class
-
-- this one is called `User`. A class declaration is always followed by a `:`.
+Let's break down this syntax. On the first line, we declare and name the class,
+this one is called `User`. A class declaration is always followed by a `:`.
 
 Then, on the next line, we see a method called `__init__`. The `__init__` method
 is the initializer - just like a `constructor` in JavaScript. We use it to set
@@ -111,13 +123,13 @@ a greeting formatted with the `User` instance's name. At the end, we
 
 > 10 min exercise, 10 min review
 
-- Bank accounts should be created with the `type` of account (like "savings" or
+* Bank accounts should be created with the `type` of account (like "savings" or
   "checking").
-- Each account should keep track of its current `balance` which should start at
+* Each account should keep track of its current `balance` which should start at
   `0`.
-- Each account should have access to a `deposit` and a `withdraw` method.
-  - `withdraw` should return the amount withdrawn
-  - `deposit` should return the new account balance after depositing
+* Each account should have access to a `deposit` and a `withdraw` method.
+  * `withdraw` should return the amount withdrawn
+  * `deposit` should return the new account balance after depositing
 
 Create a checking account and a savings account. Withdraw money from the savings
 account and deposit that amount into the checking account.
@@ -131,9 +143,9 @@ Bonuses:
    user from going below a balance of -100, including the overdraft fees.
 
 <details>
-<summary> Solution </summary>
+<summary>Solution</summary>
 
-<h4> Non-Bonus </h4>
+#### Non-Bonus
 
 ```python
 class BankAccount:
@@ -150,7 +162,7 @@ class BankAccount:
         return self.balance
 ```
 
-<h4> Bonus I </h4>
+#### Bonus I
 
 ```python
 class BankAccount:
@@ -169,7 +181,7 @@ class BankAccount:
         return self.balance
 ```
 
-<h4> Bonus II </h4>
+#### Bonus II
 
 ```python
 class BankAccount:
@@ -218,9 +230,9 @@ it's parent, and it can define it's own functionality on top of that.
 When we define a class to represent a **Phone** we can add the basic properties
 and functionality that all phones have.
 
-- All phones have a phone number
-- All phones can place phone calls
-- All phones can send text messages
+* All phones have a phone number
+* All phones can place phone calls
+* All phones can send text messages
 
 After we define what a **Phone** is we can create classes that `inherit` from
 the Phone class and add their own properties and functionality.
@@ -229,9 +241,9 @@ Let's define two new classes that `inherit` from the **Phone** class. We'll make
 an **IPhone** and an **AndroidPhone** (class names are uppercase by convention,
 but not required)
 
-- iPhones have a unique `unlock` method that accepts a fingerprint
-- iPhones have a unique `set_fingerprint` method that accepts a fingerprint
-- Android phones have a unique `set_keyboard` method that accepts a keyboard
+* iPhones have a unique `unlock` method that accepts a fingerprint
+* iPhones have a unique `set_fingerprint` method that accepts a fingerprint
+* Android phones have a unique `set_keyboard` method that accepts a keyboard
 
 ```python
 class Phone:
@@ -273,10 +285,10 @@ class Android(Phone):
 
 There are two new pieces of syntax used in the code above:
 
-1.  Class definitions can accept a parameter specifying what class they inherit
-    from.
-2.  Child classes can invoke a method called `super()` to gain access to methods
-    defined in the parent class and execute them.
+1. Class definitions can accept a parameter specifying what class they inherit
+   from.
+2. Child classes can invoke a method called `super()` to gain access to methods
+   defined in the parent class and execute them.
 
 Take another look at the Phone classes to see how these pieces of syntax are
 used to define how the classes define their inheritance and how the `super()`
@@ -385,9 +397,7 @@ Overdraft account has $-28
 ```
 
 <details>
-<summary>
-Solution
-</summary>
+<summary>Solution</summary>
 
 ```python
 class BankAccount():
@@ -425,11 +435,11 @@ class ChildrensAccount(BankAccount):
     def __init__(self):
         super().__init__()
         self.interest = 0
-    
+
     def accumulate_interest(self):
         self.balance += 10
         return self.balance
-    
+
 
 class OverdraftAccount(BankAccount):
     def __init__(self):
@@ -509,10 +519,13 @@ Such dunder methods exist for **_almost every operator_**!
   the class.
   > Check out comparison dunder methods! See link above.
 
-## Bonus - You Do: Codebar
+## Additional Resources
 
-> 20 minutes exercise. 5 minutes review.
+*[Python 3 Object Oriented Programming](https://realpython.com/python3-object-oriented-programming/)
+* [Object Oriented Programming](https://python-textbok.readthedocs.io/en/1.0/Object_Oriented_Programming.html)
 
-Clone down
-[this repo](https://git.generalassemb.ly/dc-wdi-python-django/codebar) and
-follow the instructions in the readme.
+## [License](LICENSE)
+
+1. All content is licensed under a CC­BY­NC­SA 4.0 license.
+1. All software code is licensed under GNU GPLv3. For commercial use or
+    alternative licensing, please contact legal@ga.co.
