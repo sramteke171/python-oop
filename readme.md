@@ -521,7 +521,7 @@ Such dunder methods exist for **_almost every operator_**!
 
 ## Additional Resources
 
-*[Python 3 Object Oriented Programming](https://realpython.com/python3-object-oriented-programming/)
+* [Python 3 Object Oriented Programming](https://realpython.com/python3-object-oriented-programming/)
 * [Object Oriented Programming](https://python-textbok.readthedocs.io/en/1.0/Object_Oriented_Programming.html)
 
 ## [License](LICENSE)
