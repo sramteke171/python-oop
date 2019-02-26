@@ -2,26 +2,26 @@
 
 # Intro to Object-Oriented Programming in Python
 
-We've covered Object-Oriented programming in JavaScript. Now we'll cover
-the same principles in Python. Be on the look out for similarities and
-differences between the two languages!
+We've covered Object-Oriented programming in JavaScript. Now we'll cover the
+same principles in Python. Be on the look out for similarities and differences
+between the two languages!
 
 ## Prerequisites
 
-* Python
-* Object-Oriented Programming in another language
+- Python
+- Object-Oriented Programming in another language
 
 ## Objectives
 
 By the end of this, developers should be able to:
 
-* Review the principles of Object Oriented Programming
-* Describe the relationship between a class and an instance
-* Define a Python Class and instantiate it
-* Distinguish between local, instance, and class variables
-* Interact with objects through methods
-* Explain inheritance in Python
-* Look at Python's "magic methods" or dunder methods
+- Review the principles of Object Oriented Programming
+- Describe the relationship between a class and an instance
+- Define a Python Class and instantiate it
+- Distinguish between local, instance, and class variables
+- Interact with objects through methods
+- Explain inheritance in Python
+- Look at Python's "magic methods" or dunder methods
 
 ## Review: Why OOP? (5 min / 0:05)
 
@@ -70,19 +70,26 @@ well-designed, then they interact with each other in well-defined ways. This
 allows us to refactor (rewrite) any object, and it should not impact (cause
 bugs) in other areas of our programs.
 
+## Code along
+
+Create a new folder in your `sandbox` called `python-oop`.
+
+Inside that folder create a file called `oop.py`. We'll use this file for
+writing sample code in this lesson.
+
 ## OOP Syntax: JavaScript vs. Python (5 min / 0:10)
 
 In JavaScript, we could write this class:
 
 ```js
 class User {
-  constructor(name) {
-    this.name = name
-  }
+	constructor(name) {
+		this.name = name
+	}
 
-  greet() {
-    console.log(`Hi! My name is ${this.name}.`)
-  }
+	greet() {
+		console.log(`Hi! My name is ${this.name}.`)
+	}
 }
 
 const me = new User("Ali")
@@ -114,22 +121,35 @@ parameters: `self` and `name`. By convention `self` is the first parameter to
 each method in a Python class - it refers to the instance of the class, for
 example, a `User` object.
 
+> Q: What's the equivalent of python's `self` in javascript?
+
+<details>
+<summary>Answer</summary>
+
+```
+this
+```
+
+</details>
+
 A particular `User` or instance of the `User` class will have a `name` attribute
 that we will set in our `__init__` method. Finally, the `greet` method displays
 a greeting formatted with the `User` instance's name. At the end, we
 **instantiate** a new user with `me = User("Ali")`.
 
-### Exercise: Create a `BankAccount` class (20 min / 0:30).
+### You do: Create a `BankAccount` class (20 min / 0:30).
 
 > 10 min exercise, 10 min review
 
-* Bank accounts should be created with the `type` of account (like "savings" or
+Create a BankAccount class that meets the following criteria:
+
+- Bank accounts should be created with the `type` of account (like "savings" or
   "checking").
-* Each account should keep track of its current `balance` which should start at
+- Each account should keep track of its current `balance` which should start at
   `0`.
-* Each account should have access to a `deposit` and a `withdraw` method.
-  * `withdraw` should return the amount withdrawn
-  * `deposit` should return the new account balance after depositing
+- Each account should have access to a `deposit` and a `withdraw` method.
+  - `withdraw` should return the amount withdrawn
+  - `deposit` should return the new account balance after depositing
 
 Create a checking account and a savings account. Withdraw money from the savings
 account and deposit that amount into the checking account.
@@ -160,6 +180,13 @@ class BankAccount:
     def deposit(self, amount):
         self.balance += amount
         return self.balance
+
+checking = BankAccount('checking')
+savings = BankAccount('savings')
+
+savings.deposit(1000)
+transfer = savings.withdraw(500)
+checking.deposit(transfer)
 ```
 
 #### Bonus I
@@ -230,20 +257,20 @@ it's parent, and it can define it's own functionality on top of that.
 When we define a class to represent a **Phone** we can add the basic properties
 and functionality that all phones have.
 
-* All phones have a phone number
-* All phones can place phone calls
-* All phones can send text messages
+- All phones have a phone number
+- All phones can place phone calls
+- All phones can send text messages
 
 After we define what a **Phone** is we can create classes that `inherit` from
 the Phone class and add their own properties and functionality.
 
 Let's define two new classes that `inherit` from the **Phone** class. We'll make
-an **IPhone** and an **AndroidPhone** (class names are uppercase by convention,
-but not required)
+an **IPhone** and an **Android** (class names are uppercase by convention, but
+not required)
 
-* iPhones have a unique `unlock` method that accepts a fingerprint
-* iPhones have a unique `set_fingerprint` method that accepts a fingerprint
-* Android phones have a unique `set_keyboard` method that accepts a keyboard
+- iPhones have a unique `unlock` method that accepts a fingerprint
+- iPhones have a unique `set_fingerprint` method that accepts a fingerprint
+- Android phones have a unique `set_keyboard` method that accepts a keyboard
 
 ```python
 class Phone:
@@ -310,9 +337,14 @@ class Android(Phone):
         super().__init__(phone_number)
 ```
 
+Note how we pass in the `phone_number` parameter to `super().__init__()`.
+
+This gives `phone_number` a value, like setting a variable. Now we're able to
+access `self.phone_number` in the Android class, and it's already been set!
+
 ## Break (10 min / 1:10)
 
-## Exercise: Write Bank Account Classes (40 min / 2:00)
+## You do: Write Bank Account Classes (40 min / 2:00)
 
 > 20 min exercise, 20 min review
 
@@ -337,13 +369,13 @@ of Bank accounts.
   - Inherits from **BankAccount**
   - Children's bank accounts have an interest rate of Zero.
   - Every time `accumulate_interest` is executed on a Child's account the
-    account always gets $10 added to the balance.
+    account always gets \$10 added to the balance.
 - Create an **OverdraftAccount** class
   - Inherits from **BankAccount**
   - An overdraft account penalizes customers for trying to draw too much money
     out of their account.
   - Overdraft accounts are created with an `overdraft_penalty` property that
-    defaults to $40.
+    defaults to \$40.
   - Customer's aren't allowed to withdraw more money than they have in their
     account. If a customer tries to withdraw more than they have then the
     withdraw method returns `False` and their balance is deducted only by the
@@ -459,6 +491,7 @@ class OverdraftAccount(BankAccount):
         else:
             return super().accumulate_interest()
 ```
+
 </details>
 
 ## Break (10 min / 2:00)
@@ -488,6 +521,15 @@ print(str(maddie)) # Maddie
 print(maddie) # Maddie
 ```
 
+We can also think of the `__str__` method as useful to _describe_ a class
+instance. What happens if we don't have one and we try to `print(maddie)`?
+
+We'll see something like this:
+
+```py
+<__main__.Dog object at 0x7f7561eee198>
+```
+
 Other useful dunder methods include:
 
 - `__getattr__` for when you get an attribute (i.e. `maddie.name`)
@@ -498,7 +540,7 @@ Other useful dunder methods include:
   `maddie['food']`)
 
 Such dunder methods exist for **_almost every operator_**!
-[Reference on more](http://www.diveintopython3.net/special-method-names.html).
+[More examples here](https://dbader.org/blog/python-dunder-methods).
 
 ### Exercise: Fancy Bank Accounts (feat. Magic Methods) (20 min / 2:20)
 
@@ -517,15 +559,15 @@ Such dunder methods exist for **_almost every operator_**!
 - Make it so that you can compare the balances of two bank accounts by using the
   greater than, less than, and equals to operators in Python on two instances of
   the class.
-  > Check out comparison dunder methods! See link above.
+  > Check out comparison dunder methods (like `__eq__` and `__lt__`)! See link above.
 
 ## Additional Resources
 
-* [Python 3 Object Oriented Programming](https://realpython.com/python3-object-oriented-programming/)
-* [Object Oriented Programming](https://python-textbok.readthedocs.io/en/1.0/Object_Oriented_Programming.html)
+- [Python 3 Object Oriented Programming](https://realpython.com/python3-object-oriented-programming/)
+- [Object Oriented Programming](https://python-textbok.readthedocs.io/en/1.0/Object_Oriented_Programming.html)
 
 ## [License](LICENSE)
 
 1. All content is licensed under a CC­BY­NC­SA 4.0 license.
 1. All software code is licensed under GNU GPLv3. For commercial use or
-    alternative licensing, please contact legal@ga.co.
+   alternative licensing, please contact legal@ga.co.
