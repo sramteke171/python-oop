@@ -83,13 +83,13 @@ In JavaScript, we could write this class:
 
 ```js
 class User {
-	constructor(name) {
-		this.name = name
-	}
+  constructor(name) {
+    this.name = name
+  }
 
-	greet() {
-		console.log(`Hi! My name is ${this.name}.`)
-	}
+  greet() {
+    console.log(`Hi! My name is ${this.name}.`)
+  }
 }
 
 const me = new User("Ali")
@@ -108,7 +108,7 @@ class User:
 
 me = User('Jimmy')
 me.greet()
-// "Hi! My name is Jimmy"
+# => "Hi! My name is Jimmy"
 ```
 
 Let's break down this syntax. On the first line, we declare and name the class,
@@ -141,9 +141,12 @@ a greeting formatted with the `User` instance's name. At the end, we
 
 > 10 min exercise, 10 min review
 
+Create a folder in your sandbox called `python-oop`. Inside it, create a new
+file called `bank_accounts.py`.
+
 Create a BankAccount class that meets the following criteria:
 
-- Bank accounts should be created with the `type` of account (like "savings" or
+- Bank accounts should accept a `type` property - (like "savings" or
   "checking").
 - Each account should keep track of its current `balance` which should start at
   `0`.
@@ -151,8 +154,9 @@ Create a BankAccount class that meets the following criteria:
   - `withdraw` should return the amount withdrawn
   - `deposit` should return the new account balance after depositing
 
-Create a checking account and a savings account. Withdraw money from the savings
-account and deposit that amount into the checking account.
+Once you've defined the class, create a checking account and a savings account.
+Withdraw money from the savings account and deposit that amount into the
+checking account.
 
 Bonuses:
 
@@ -546,8 +550,8 @@ Such dunder methods exist for **_almost every operator_**!
 
 > 15 min exercise, 5 min review
 
-- When you print the bank account, make it so that it prints a well-formatted
-  blurb about the kind of account and its balance. (ex. `Savings Account: $50`)
+- When you print the bank account instance, make it show a well-formatted blurb
+  about the kind of account and its balance. (ex. `Savings Account: $50`)
   > [Formatted Strings in Python](https://docs.python.org/3.6/library/string.html#format-string-syntax)
 - Make it so that you can add the balances of two bank accounts by adding two
   instances of the class.
@@ -559,7 +563,8 @@ Such dunder methods exist for **_almost every operator_**!
 - Make it so that you can compare the balances of two bank accounts by using the
   greater than, less than, and equals to operators in Python on two instances of
   the class.
-  > Check out comparison dunder methods (like `__eq__` and `__lt__`)! See link above.
+  > Check out comparison dunder methods (like `__eq__` and `__lt__`)! See link
+  > above.
 
 ## Additional Resources
 
