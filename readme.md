@@ -84,16 +84,16 @@ In JavaScript, we could write this class:
 ```js
 class User {
   constructor(name) {
-    this.name = name
+    this.name = name;
   }
 
   greet() {
-    console.log(`Hi! My name is ${this.name}.`)
+    console.log(`Hi! My name is ${this.name}.`);
   }
 }
 
-const me = new User("Ali")
-me.greet()
+const me = new User("Ali");
+me.greet();
 ```
 
 Let's have a look at what this might look like in Python:
@@ -559,7 +559,8 @@ Such dunder methods exist for **_almost every operator_**!
 - Make it so that you can subtract, multiply, and divide the balances of two
   bank accounts by performing those mathematical operations on two instances of
   the class.
-  > Check out other arithmetical dunder methods! See link above.
+  > Check out other arithmetical dunder methods! See link above as well as
+  > [this resource](https://www.python-course.eu/python3_magic_methods.php).
 - Make it so that you can compare the balances of two bank accounts by using the
   greater than, less than, and equals to operators in Python on two instances of
   the class.
