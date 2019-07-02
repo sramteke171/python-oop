@@ -16,12 +16,9 @@ between the two languages!
 By the end of this, developers should be able to:
 
 - Review the principles of Object Oriented Programming
-- Describe the relationship between a class and an instance
 - Define a Python Class and instantiate it
-- Distinguish between local, instance, and class variables
-- Interact with objects through methods
-- Explain inheritance in Python
-- Look at Python's "magic methods" or dunder methods
+- Describe inheritance in Python
+- Look at Python's "magic methods" aka dunder methods
 
 ## Review: Why OOP? (5 min / 0:05)
 
@@ -74,8 +71,7 @@ bugs) in other areas of our programs.
 
 Classes can inherit data members and member functions (formal names for
 "properties" and "methods") from other classes, allowing us to extend these
-properties and methods while maintaining the flexibility to overwrite them as
-needed.
+attributes while maintaining the flexibility to overwrite them as needed.
 
 ## Code along
 
