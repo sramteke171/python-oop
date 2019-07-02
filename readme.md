@@ -73,9 +73,9 @@ bugs) in other areas of our programs.
 ### Inheritance
 
 Classes can inherit data members and member functions (formal names for
-"properties" and "methods") from other classes, allowing us to reuse code for
-related objects while maintaining the flexibility to overwrite these inherited
-properties/methods as needed.
+"properties" and "methods") from other classes, allowing us to extend these
+properties and methods while maintaining the flexibility to overwrite them as
+needed.
 
 ## Code along
 
