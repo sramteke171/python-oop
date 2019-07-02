@@ -70,6 +70,13 @@ well-designed, then they interact with each other in well-defined ways. This
 allows us to refactor (rewrite) any object, and it should not impact (cause
 bugs) in other areas of our programs.
 
+### Inheritance
+
+Classes can inherit data members and member functions (formal names for
+"properties" and "methods") from other classes, allowing us to reuse code for
+related objects while maintaining the flexibility to overwrite these inherited
+properties/methods as needed.
+
 ## Code along
 
 Create a new folder in your `sandbox` called `python-oop`.
