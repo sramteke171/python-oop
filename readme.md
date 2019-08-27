@@ -154,7 +154,7 @@ Create a BankAccount class that meets the following criteria:
 - Each account should keep track of its current `balance` which should start at
   `0`.
 - Each account should have access to a `deposit` and a `withdraw` method.
-  - `withdraw` should return the amount withdrawn
+  - `withdraw` should return the new account balance after withdrawing
   - `deposit` should return the new account balance after depositing
 
 Once you've defined the class, create a checking account and a savings account.
